@@ -13,8 +13,12 @@
       { name: 'Wes', year: 1988 },
       { name: 'Kait', year: 1986 },
       { name: 'Irv', year: 1970 },
-      { name: 'Lux', year: 2015 }
+      { name: 'Lux', year: 2015 },
+      { name: 'Catalina', year: 2002 },
+      { name: 'Veronica', year: 2010 },
     ];
+    const today = new Date();
+    const year = today.getFullYear();
 
     const comments = [
       { text: 'Love this!', id: 523423 },
@@ -26,15 +30,63 @@
 
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
+    const leatOnePerson = people.some((person) => {
+      // console.log('====================================');
+      // console.log('Person');
+      // console.table(person);
+      // console.log(year - person.year);
+      // console.log('====================================');
+      return (year - person.year) > 18;
+    });
+
+    console.log('====================================');
+    console.log('Least one person', leatOnePerson);
+    console.log('====================================');
+
     // Array.prototype.every() // is everyone 19 or older?
+
+    const everyPerson = people.every((person) => {
+      // console.log('====================================');
+      // console.log('Person');
+      // console.table(person);
+      // console.log(year - person.year);
+      // console.log('====================================');
+      return (year - person.year) > 18;
+    });
+
+    console.log('====================================');
+    console.log('Every person', everyPerson);
+    console.log('====================================');
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
+    const findComment = comments.find(comment => comment.id === 823423);
+
+    console.log('====================================');
+    console.log('Comment with id 823423', findComment);
+    console.log('====================================');
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+    console.log('====================================');
+    console.log('Comments before delete');
+    console.table(comments);
+    console.log('====================================');
+
+    const findIndexComment = comments.findIndex(comment => comment.id === 823423);
+
+    console.log('====================================');
+    console.log('Index to delete', findIndexComment);
+    console.log('====================================');
+
+    comments.splice(findIndexComment, 1);
+
+    console.log('====================================');
+    console.log('Comments after delete');
+    console.table(comments);
+    console.log('====================================');
 
   </script>
 </body>
